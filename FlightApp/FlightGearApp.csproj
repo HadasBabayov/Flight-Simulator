@@ -120,6 +120,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="reg_flight_for_timeseries.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
