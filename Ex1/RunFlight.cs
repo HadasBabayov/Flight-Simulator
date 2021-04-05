@@ -53,7 +53,6 @@ namespace Ex1
                         byte[] msgToSend = Encoding.ASCII.GetBytes(line);
                         networkStream.Write(msgToSend, 0, msgToSend.Length);
                         networkStream.Flush();
-                        Console.WriteLine(line);
                         Thread.Sleep(pace);
                     }
                 }
@@ -61,7 +60,9 @@ namespace Ex1
             t.Start();
         }
 
-        public void StopFlight() { shouldStop = true; }
+        public void StopFlight() { 
+            shouldStop = true;
+        }
 
         public void StartFlightOver()
         {

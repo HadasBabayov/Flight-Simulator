@@ -1,0 +1,14 @@
+C:\Users\User\source\repos\Flight-Simulator\Ex1\bin\x86\Debug\reg_flight.csv
+C:\Users\User\source\repos\Flight-Simulator\Ex1\bin\x86\Debug\Ex1.exe.config
+C:\Users\User\source\repos\Flight-Simulator\Ex1\bin\x86\Debug\Ex1.exe
+C:\Users\User\source\repos\Flight-Simulator\Ex1\bin\x86\Debug\Ex1.pdb
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\App.g.cs
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\Ex1_MarkupCompile.cache
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\MainWindow.baml
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\Ex1.g.resources
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\Ex1.Properties.Resources.resources
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\Ex1.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\Ex1.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\Ex1.exe
+C:\Users\User\source\repos\Flight-Simulator\Ex1\obj\x86\Debug\Ex1.pdb
