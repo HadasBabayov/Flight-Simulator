@@ -1,0 +1,29 @@
+﻿<Window x:Class="FlightGearApp.windows.AppWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightGearApp.controls"
+        mc:Ignorable="d"
+        Title="AppWindow" Height="450" Width="800">
+    <Grid>
+        <local:TimeController x:Name="TimeConroller" Height="54" VerticalAlignment="Top"/>
+        
+        
+        <Grid HorizontalAlignment="Left" Height="396" Margin="0,54,0,0" VerticalAlignment="Top" Width="800">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Row="0" Grid.Column="2" Width="200">
+                <local:WheelController x:Name="WheelController" Width="503" Height="462"/>
+            </Viewbox>
+        </Grid>
+
+    </Grid>
+</Window>
