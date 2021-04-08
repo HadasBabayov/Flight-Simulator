@@ -1,0 +1,216 @@
+﻿using FlightGearApp;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Threading;
+using System.Security.Cryptography.X509Certificates;
+
+namespace FlightGearApp
+{
+    class FlightInfoModel : INotifyPropertyChanged
+    {
+        private FilesParser fp;
+        private volatile float altitude;
+        private volatile float speed;
+        private volatile float direction;
+        private volatile float yaw;
+        private volatile float roll;
+        private volatile float pitch;
+        private volatile int time;
+        private volatile int pace;
+        private volatile bool shouldStoped;
+        private volatile Dictionary<int, string> map1;
+        private volatile Dictionary<string, List<float>> map;
+        private int flightLength;
+        private int numOfLines;
+        public FlightInfoModel()
+        {
+            time = 0;
+            pace = 100;
+            shouldStoped = true;
+            altitude = 0;
+            speed = 0;
+            direction = 0;
+            yaw = 0;
+            roll = 0;
+            pitch = 0;
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+
+        }
+
+        public int Time
+        {
+            get
+            {
+                return time;
+            }
+            set
+            {
+                time = value;
+                NotifyPropertyChanged("Time");
+            }
+        }
+        public int Pace
+        {
+            get
+            {
+                return pace;
+            }
+            set
+            {
+                pace = value;
+                NotifyPropertyChanged("Pace");
+            }
+        }
+
+        public bool ShouldStop
+        {
+            get
+            {
+                return shouldStoped;
+            }
+            set
+            {
+                shouldStoped = value;
+                if (value == false)
+                {
+                    run();
+                }
+                NotifyPropertyChanged("ShouldStop");
+            }
+        }
+        public void ChangeTimeAndPace(int time)
+        {
+            Time = time;
+        }
+
+        public void setMap(Dictionary<string, List<float>> value)
+        {
+            map = value;
+            findNumOfLines();
+        }
+
+        public void findNumOfLines()
+        {
+            numOfLines = map["elevator1"].Count;
+        }
+
+        public float Altitude
+        {
+            get
+            {
+                return altitude;
+            }
+            set
+            {
+                altitude = value;
+                NotifyPropertyChanged("Altitude");
+            }
+        }
+
+        public float Speed
+        {
+            get
+            {
+                return speed;
+            }
+            set
+            {
+                speed = value;
+                NotifyPropertyChanged("Speed");
+            }
+        }
+        public float Direction
+        {
+            get
+            {
+                return direction;
+
+            }
+            set
+            {
+                direction = value;
+                NotifyPropertyChanged("Direction");
+            }
+        }
+        public float Yaw
+        {
+            get
+            {
+                return yaw;
+            }
+            set
+            {
+                yaw = value;
+                NotifyPropertyChanged("Yaw");
+            }
+        }
+        public float Roll
+        {
+            get
+            {
+                return roll;
+            }
+            set
+            {
+                roll = value;
+                NotifyPropertyChanged("Roll");
+            }
+        }
+        public float Pitch
+        {
+            get
+            {
+                return pitch;
+            }
+            set
+            {
+                pitch = value;
+                NotifyPropertyChanged("Pitch");
+            }
+        }
+
+
+
+        public void run()
+        {
+
+
+            Thread t = new Thread(
+                delegate ()
+                {
+                    while (time < numOfLines && !shouldStoped)
+                    {
+                        showLine(time);
+                        time++;
+                        Thread.Sleep(pace);
+                    }
+                }
+            );
+            t.Start();
+        }
+
+        public void showLine(int time)
+        {
+            Altitude = map["altimeter_indicated-altitude-ft1"][time];
+            Speed = map["airspeed-kt1"][time];
+            Direction = map["indicated-heading-deg1"][time];
+            Yaw = map["side-slip-deg1"][time];
+            Roll = map["roll-deg1"][time];
+            Pitch = map["pitch-deg1"][time];
+        }
+
+       
+    }
+}

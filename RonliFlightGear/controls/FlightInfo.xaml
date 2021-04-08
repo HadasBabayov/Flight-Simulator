@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="FlightGearApp.controls.FlightInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightGearApp.controls"
+             mc:Ignorable="d" d:DesignWidth="800" Height="442.535">
+    <Grid Height="446" VerticalAlignment="Top" RenderTransformOrigin="0.499,1.018" Margin="-1,8,1,-11.6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="222*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Flight altitude:" Foreground="Black" HorizontalAlignment="Left" Height="52" Margin="45,46,0,0" VerticalAlignment="Top" Width="311" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content="Flight speed:" Foreground="Black" HorizontalAlignment="Left" Height="51" Margin="45,102,0,0" VerticalAlignment="Top" Width="324" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content="Flight direction:" Foreground="Black" HorizontalAlignment="Left" Height="51" Margin="45,160,0,0" VerticalAlignment="Top" Width="324" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content="Other Flight indices:" Foreground="Black" HorizontalAlignment="Left" Height="51" Margin="45,219,0,0" VerticalAlignment="Top" Width="456" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content=" - yaw:"  Foreground="Black" HorizontalAlignment="Left" Height="48" Margin="45,270,0,0" VerticalAlignment="Top" Width="324" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content=" - roll:" Foreground="Black" HorizontalAlignment="Left" Height="51" Margin="45,318,0,0" VerticalAlignment="Top" Width="324" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content=" - pitch:" Foreground="Black" HorizontalAlignment="Left" Height="51" Margin="45,370,0,0" VerticalAlignment="Top" Width="324" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content="{Binding VM_Altitude}"  Foreground="Black" HorizontalAlignment="Left" Height="52" Margin="369,46,0,0" VerticalAlignment="Top" Width="397" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content="{Binding VM_Speed}" Foreground="Black" HorizontalAlignment="Left" Height="51" Margin="369,102,0,0" VerticalAlignment="Top" Width="407" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content="{Binding VM_Direction}" Foreground="Black" HorizontalAlignment="Left" Height="51" Margin="369,160,0,0" VerticalAlignment="Top" Width="407" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content="{Binding VM_Yaw}" Foreground="Black" HorizontalAlignment="Left" Height="48" Margin="369,270,0,0" VerticalAlignment="Top" Width="407" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content="{Binding VM_Roll}" Foreground="Black" HorizontalAlignment="Left" Height="51" Margin="369,318,0,0" VerticalAlignment="Top" Width="407" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+        <Label Content="{Binding VM_Pitch}" Foreground="Black" HorizontalAlignment="Left" Height="51" Margin="369,370,0,0" VerticalAlignment="Top" Width="407" FontSize="25" FontWeight="Bold" FontFamily="David" Grid.IsSharedSizeScope="True" IsEnabled="False"/>
+
+    </Grid>
+</UserControl>
+
