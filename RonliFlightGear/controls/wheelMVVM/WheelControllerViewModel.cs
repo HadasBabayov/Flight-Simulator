@@ -18,11 +18,9 @@ namespace FlightGearApp
         {
             if (this.PropertyChanged != null)
             {
-                Console.WriteLine(propName);
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
 
             }
-
         }
 
         public WheelControllerViewModel(WheelControllerModel wheelControllerModel)

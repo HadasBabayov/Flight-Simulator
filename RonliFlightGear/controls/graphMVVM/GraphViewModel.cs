@@ -79,9 +79,9 @@ namespace FlightGearApp
 
 
         public List<string> getStringsDataList() { return model.getStringsList(); }
-        public void setMaps(Dictionary<string, List<float>> map, List<string> strings)
+        public void setMaps(Dictionary<string, List<float>> learnMap, List<string> strings, Dictionary<string, List<float>> anaomalyMap)
         {
-            model.setMaps(map, strings);
+            model.setMaps(learnMap, strings,anaomalyMap);
         }
 
         public void run()

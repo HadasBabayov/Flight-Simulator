@@ -7,7 +7,7 @@
              d:DesignHeight="600" d:DesignWidth="450">
     <StackPanel>
         <!--Menu-->
-        <TextBlock Text="Choose graph property" FontSize="24" FontWeight="UltraBold" Height="40" Margin="10,0,-0.4,0"></TextBlock>
+        <TextBlock Text="Choose graph property" FontSize="21" FontWeight="UltraBold" Height="40" Margin="10,0,-0.4,0" FontFamily="Lucida Handwriting"></TextBlock>
         <ComboBox x:Name="XML_data_strings" Padding="10" SelectionChanged="XML_data_strings_SelectionChanged"
                   Text="{Binding VM_SelectedDataName}"
                   ItemsSource="{Binding select, Mode=OneWay}" Height="40" Margin="0,0,144.6,0"/>

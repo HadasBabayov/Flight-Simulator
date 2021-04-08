@@ -36,9 +36,9 @@ namespace FlightGearApp.controls
 
         }
 
-        public void setMaps(Dictionary<string, List<float>> map, List<string> strings)
+        public void setMaps(Dictionary<string, List<float>> learnMap, List<string> strings, Dictionary<string, List<float>> anaomalymap)
         {
-            vm.setMaps(map, strings);
+            vm.setMaps(learnMap, strings, anaomalymap);
             XML_data_strings.ItemsSource = vm.getStringsDataList();
             vm.run();
         }

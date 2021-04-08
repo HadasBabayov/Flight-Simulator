@@ -48,25 +48,46 @@ namespace FlightGearApp
             }
         }
 
-        public string VM_CSVpath
+        public string VM_CSVLearnpath
         {
             get
             {
-                return fmodel.CSVpath;
+                return fmodel.CSVLearnpath;
             }
             set
             {
-                fmodel.CSVpath = value;
+                fmodel.CSVLearnpath = value;
             }
         }
 
-        public string VM_CSV_exception
+        public string VM_CSVAnomalypath
         {
             get
             {
-                return fmodel.CSV_exception;
+                return fmodel.CSVAnomalypath;
+            }
+            set
+            {
+                fmodel.CSVAnomalypath = value;
+            }
+        }
+
+
+        public string VM_CSVLearn_exception
+        {
+            get
+            {
+                return fmodel.CSVLearn_exception;
             }
            
+        }
+        public string VM_CSVAnomaly_exception
+        {
+            get
+            {
+                return fmodel.CSVAnomaly_exception;
+            }
+
         }
 
         public string MatchXMLToCSV()
@@ -84,14 +105,22 @@ namespace FlightGearApp
             return fmodel.createNewCsv();
         }
 
-        public void initializeParser(string xmlPath, string csvPath)
+        public void initializeParserForLearnCsv(string xmlPath, string csvPath)
         {
-            fmodel.initializeParser(xmlPath, csvPath);
+            fmodel.initializeParserForLearnCsv(xmlPath, csvPath);
+        }
+        public void initializeParserForAnomalyCsv(string xmlPath, string csvPath)
+        {
+            fmodel.initializeParserForAnomalyCsv(xmlPath, csvPath);
         }
 
         public FilesParser getFilesParser()
         {
             return fmodel.getFilesParser();
+        }
+        public FilesParser getFilesParserForAnomalyCsv()
+        {
+            return fmodel.getFilesParserForAnomalyCsv();
         }
     }
 }

@@ -13,7 +13,8 @@ namespace FlightGearApp
     {
         FilesParser data;
         private List<string> XmlDataNamesList;
-        private Dictionary<string, List<float>> Xml_Csv_Map;
+        private Dictionary<string, List<float>> Xml_Csv_LearnMap;
+        private Dictionary<string, List<float>> Xml_Csv_AnomalyMap;
         private string slectedDataName, corrName;
         private volatile bool shouldStoped;
         private volatile int time;
@@ -119,25 +120,26 @@ namespace FlightGearApp
             set
             {
                 slectedDataName = value;
-                this.selectedDatavalues = Xml_Csv_Map[SelectedDataName];
+                this.selectedDatavalues = Xml_Csv_AnomalyMap[SelectedDataName];
                 findMostCorr.setNameAndValues(value, selectedDatavalues);
-                corrName = findMostCorr.findCrr(Xml_Csv_Map, XmlDataNamesList);
-                corrValues = Xml_Csv_Map[corrName];
+                corrName = findMostCorr.findCrr(Xml_Csv_LearnMap, XmlDataNamesList);
+                corrValues = Xml_Csv_AnomalyMap[corrName];
                 NotifyPropertyChanged(value);
             }
         }
 
         public List<string> getStringsList() { return XmlDataNamesList; }
-        public void setMaps(Dictionary<string, List<float>> map, List<string> strings)
+        public void setMaps(Dictionary<string, List<float>> learnMap, List<string> strings, Dictionary<string, List<float>> Anaomalymap)
         {
-            this.Xml_Csv_Map = map;
+            this.Xml_Csv_LearnMap = learnMap;
+            this.Xml_Csv_AnomalyMap = Anaomalymap;
             this.XmlDataNamesList = strings;
             this.slectedDataName = XmlDataNamesList[0];
-            this.selectedDatavalues = Xml_Csv_Map[XmlDataNamesList[0]];
-            this.maxTime = Xml_Csv_Map[XmlDataNamesList[0]].Count;
+            this.selectedDatavalues = Xml_Csv_AnomalyMap[XmlDataNamesList[0]];
+            this.maxTime = Xml_Csv_LearnMap[XmlDataNamesList[0]].Count;
             this.findMostCorr = new FindCorrelation(SelectedDataName, selectedDatavalues);
-            this.corrName = findMostCorr.findCrr(Xml_Csv_Map, XmlDataNamesList);
-            this.corrValues = Xml_Csv_Map[corrName];
+            this.corrName = findMostCorr.findCrr(Xml_Csv_LearnMap, XmlDataNamesList);
+            this.corrValues = Xml_Csv_AnomalyMap[corrName];
         }
 
         public void run()
@@ -174,8 +176,8 @@ namespace FlightGearApp
 
             for (int i = 0; i <= time; i++)
             {
-                selectedGraphLinearSeries.Points.Add(new DataPoint(i, Xml_Csv_Map[SelectedDataName][i]));
-                mostCorrelationGraphLinearSeries.Points.Add(new DataPoint(i, Xml_Csv_Map[corrName][i]));
+                selectedGraphLinearSeries.Points.Add(new DataPoint(i, Xml_Csv_AnomalyMap[SelectedDataName][i]));
+                mostCorrelationGraphLinearSeries.Points.Add(new DataPoint(i, Xml_Csv_AnomalyMap[corrName][i]));
             }
             selectedGraphHelper.Series.Add(selectedGraphLinearSeries);
             mostCorGgraphHelper.Series.Add(mostCorrelationGraphLinearSeries);

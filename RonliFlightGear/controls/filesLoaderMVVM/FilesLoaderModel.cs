@@ -12,11 +12,13 @@ namespace FlightGearApp
     {
 
         private FilesParser fp;
+        private FilesParser fpForAnomalyCsv;
 
         private string excepCsv;
         private string excepXml;
         private string XMLPath;
         private string CSVPath;
+        private string CSVAnomalyPath;
 
         public FilesLoaderModel()
         {
@@ -54,7 +56,7 @@ namespace FlightGearApp
                 NotifyPropertyChanged("XML_exception");
             }
         }
-        public string CSVpath
+        public string CSVLearnpath
         {
             get
             {
@@ -65,8 +67,19 @@ namespace FlightGearApp
                 CSVPath = value;
             }
         }
+        public string CSVAnomalypath
+        {
+            get
+            {
+                return CSVAnomalyPath;
+            }
+            set
+            {
+                CSVAnomalyPath = value;
+            }
+        }
 
-        public string CSV_exception
+        public string CSVLearn_exception
         {
             get
             {
@@ -75,7 +88,20 @@ namespace FlightGearApp
             set
             {
                 excepCsv = value;
-                NotifyPropertyChanged("CSV_exception");
+                NotifyPropertyChanged("CSVLearn_exception");
+            }
+        }
+
+        public string CSVAnomaly_exception
+        {
+            get
+            {
+                return excepCsv;
+            }
+            set
+            {
+                excepCsv = value;
+                NotifyPropertyChanged("CSVAnomaly_exception");
             }
         }
 
@@ -84,6 +110,7 @@ namespace FlightGearApp
             try
             {
                 fp.parseXML();
+                fpForAnomalyCsv.parseXML();
             }
             catch (Exception e)
             {
@@ -99,22 +126,55 @@ namespace FlightGearApp
 
         public string MatchXMLToCSV()
         {
+            CSVLearn_exception = "";
+            CSVAnomaly_exception = "";
             try
             {
                 fp.matchXMLToCSV();
                 fp.parseCSV();
+                
             }
             catch (Exception e)
             {
                 if (e.Message == "csvPath is not valid!")
                 {
-                    CSV_exception = "csvPath is not valid!";
-                    return "csvPath is not valid!";
+                    CSVLearn_exception = "csvLearnPath is not valid!";
+                    try
+                    {
+                        fpForAnomalyCsv.matchXMLToCSV();
+                        fpForAnomalyCsv.parseCSV();
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex.Message == "csvPath is not valid!")
+                        {
+                            CSVAnomaly_exception = "csvAnomalyPath is not valid!";
+                            return "csvAnomalyPath is not valid!";
+                        }
+                        //CSVLearn_exception = "";
+                    }
+                    return "csvLearnPath is not valid!";
                 }
-                //CSV_exception = "";
+                //CSVLearn_exception = "";
             }
-            CSV_exception = "";
+            try
+            {
+                fpForAnomalyCsv.matchXMLToCSV();
+                fpForAnomalyCsv.parseCSV();
+            }
+            catch (Exception e)
+            {
+                if (e.Message == "csvPath is not valid!")
+                {
+                    CSVAnomaly_exception = "csvAnomalyPath is not valid!";
+                    return "csvAnomalyPath is not valid!";
+                }
+                //CSVLearn_exception = "";
+            }
+            CSVLearn_exception = "";
+            CSVAnomaly_exception = "";
             return "";
+
         }
         public string createNewCsv()
         {
@@ -126,12 +186,12 @@ namespace FlightGearApp
             {
                 if (e.Message == "csvPath is not valid!")
                 {
-                    CSV_exception = "csvPath is not valid!";
+                    CSVLearn_exception = "csvPath is not valid!";
                     return "csvPath is not valid!";
                 }
-                CSV_exception = "";
+                CSVLearn_exception = "";
             }
-            CSV_exception = "";
+            CSVLearn_exception = "";
             return "";
         }
 
@@ -139,10 +199,20 @@ namespace FlightGearApp
         {
             return fp;
         }
+        public FilesParser getFilesParserForAnomalyCsv()
+        {
+            return fpForAnomalyCsv;
+        }
 
-        public void initializeParser(string xmlPath, string csvPath)
+        public void initializeParserForLearnCsv(string xmlPath, string csvPath)
         {
             fp = new FilesParser(csvPath, xmlPath);
+
+        }
+
+        public void initializeParserForAnomalyCsv(string xmlPath, string csvPath)
+        {
+            fpForAnomalyCsv = new FilesParser(csvPath, xmlPath);
 
         }
     }

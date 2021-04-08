@@ -21,11 +21,10 @@ namespace FlightGearApp.windows
     /// </summary>
     public partial class AppWindow : Window
     {
-        public AppWindow(FilesParser fp)
+        public AppWindow(FilesParser fpForLearnCsv, FilesParser fpForAnomalyCsv)
         {
             InitializeComponent();
-            //this.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "airplane.jpg")));
-            TimeConroller.setTimeControllerValues(fp.getCSV());
+            TimeConroller.setTimeControllerValues(fpForAnomalyCsv.getCSV());
             TimeConroller.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
             {
                 string property = e.PropertyName;
@@ -61,11 +60,11 @@ namespace FlightGearApp.windows
                 }
             };
 
-            FlightInfo.setFlightValues(fp.getXML_CSVMap());
+            FlightInfo.setFlightValues(fpForAnomalyCsv.getXML_CSVMap());
             FlightInfo.run();
-            WheelController.setMapValues(fp.getXML_CSVMap());
+            WheelController.setMapValues(fpForAnomalyCsv.getXML_CSVMap());
             WheelController.run();
-            GraphController.setMaps(fp.getXML_CSVMap(), fp.XMLlist);
+            GraphController.setMaps(fpForLearnCsv.getXML_CSVMap(), fpForLearnCsv.XMLlist, fpForAnomalyCsv.getXML_CSVMap());
             GraphController.run();
 
         }

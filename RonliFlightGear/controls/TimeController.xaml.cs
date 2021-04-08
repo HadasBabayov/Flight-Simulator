@@ -30,8 +30,8 @@ namespace FlightGearApp.controls
             InitializeComponent();
             timeControllerVM = new TimeControllerViewModel(new TimeControllerModel());
             timeControllerVM.StartApp();
-            Pause.Visibility = Visibility.Hidden;
-            Stop.Visibility = Visibility.Hidden;
+            //Pause.Visibility = Visibility.Hidden;
+            //Stop.Visibility = Visibility.Hidden;
             DataContext = timeControllerVM;
         }
 
@@ -46,9 +46,9 @@ namespace FlightGearApp.controls
             try
             {
                 timeControllerVM.Run();
-                Pause.Visibility = Visibility.Visible;
-                Stop.Visibility = Visibility.Visible;
-                Play.Visibility = Visibility.Hidden;
+                //Pause.Visibility = Visibility.Visible;
+                //Stop.Visibility = Visibility.Visible;
+                //Play.Visibility = Visibility.Hidden;
                 Stop.IsEnabled = false;
                 NotifyPropertyChanged("ShouldStop-" + "false");
             }
@@ -62,9 +62,9 @@ namespace FlightGearApp.controls
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
             timeControllerVM.PauseFlight();
-            Pause.Visibility = Visibility.Hidden;
-            Play.Visibility = Visibility.Visible;
-            Play.Content = "Resume";
+           // Pause.Visibility = Visibility.Hidden;
+           // Play.Visibility = Visibility.Visible;
+            //Play.Content = "Resume";
             Stop.IsEnabled = true;
             NotifyPropertyChanged("ShouldStop-" + "true");
         }
@@ -72,9 +72,9 @@ namespace FlightGearApp.controls
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             timeControllerVM.ResetFlight();
-            Pause.Visibility = Visibility.Hidden;
-            Stop.Visibility = Visibility.Hidden;
-            Play.Content = "Play";
+            //Pause.Visibility = Visibility.Hidden;
+            //Stop.Visibility = Visibility.Hidden;
+            //Play.Content = "Play";
         }
 
         public void setTimeControllerValues(Dictionary<int, string> values)

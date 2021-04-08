@@ -13,20 +13,26 @@
             <ColumnDefinition Width="171*"/>
         </Grid.ColumnDefinitions>-->
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="800" Grid.ColumnSpan="2" Margin="0,0,-100,0">
-            <TextBox Text="Play Speed:" HorizontalAlignment="Left" Height="25" Margin="261.667,0.667,0,0" TextWrapping="Wrap" Background="Transparent" BorderBrush="Transparent" VerticalAlignment="Top" Width="69"/>
+            <TextBox Text="Play Speed:" HorizontalAlignment="Left" Height="25" Margin="220.2,9.2,0,0" TextWrapping="Wrap" Background="Transparent" BorderBrush="Transparent" VerticalAlignment="Top" Width="107" FontFamily="Lucida Calligraphy" FontWeight="Bold" FontSize="14"/>
         </Border>
-        <Button x:Name="Play" Cursor="Hand" Content="Play" HorizontalAlignment="Left" Width="60" Margin="10,0,0,0" Click="Play_Click"  VerticalAlignment="Top" Background="#FFDDD5D5" />
-        <Button x:Name="Pause" Cursor="Hand" Content="Pause" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="75" Click="Pause_Click"/>
-        <Button x:Name="Stop" Cursor="Hand" Content="Stop" HorizontalAlignment="Left" Margin="165,0,0,0" VerticalAlignment="Top" Width="75" Click="Stop_Click"/>
+        <Button x:Name="Play" BorderBrush="Transparent" Background="Transparent" Cursor="Hand" HorizontalAlignment="Left"  Margin="10,0,0,0" Click="Play_Click"  Width="34" Height="34"  VerticalAlignment="Top" >
+            <Image Source="play.jpeg" Height="34" Width="34" OpacityMask="Black" RenderTransformOrigin="0.825,0.425"></Image>
+        </Button>
+        <Button x:Name="Pause" BorderBrush="Transparent" Background="Transparent" Cursor="Hand"  HorizontalAlignment="Left" Margin="47,0,0,0" VerticalAlignment="Top" Width="37" Height="37" Click="Pause_Click">
+            <Image Source="pause.jpeg" Height="52" Width="37" OpacityMask="Black" ></Image>
+        </Button>
+        <Button x:Name="Stop" Cursor="Hand" BorderBrush="Transparent" Background="Transparent" IsEnabled="False" HorizontalAlignment="Left" Margin="90,0,0,0" VerticalAlignment="Top" Width="35" Click="Stop_Click" Height="35">
+            <Image Source="stop.jpeg" Height="46" Width="32" OpacityMask="Black" RenderTransformOrigin="0.242,0.525" ></Image>
+        </Button>
         <Slider x:Name="TimeSlider" Minimum="0" Maximum="{Binding VM_FlightLength}" Value="{Binding VM_Time, Mode=TwoWay}"
-                TickFrequency="1" Margin="0,24,0,6" ValueChanged="Slider_ValueChanged"
-                IsMoveToPointEnabled="true" Grid.ColumnSpan="2">
+                TickFrequency="1" Margin="0,39,0,-9" ValueChanged="Slider_ValueChanged"
+                IsMoveToPointEnabled="true" RenderTransformOrigin="0.505,0.497">
             <Slider.Background>
                 <ImageBrush/>
             </Slider.Background>
         </Slider>
         <Grid HorizontalAlignment="Left" Height="0" Margin="0,49,0,0" VerticalAlignment="Top" Width="389">
-            <ComboBox Name="PlaySpeed" SelectedValuePath="Content" SelectedIndex="2" HorizontalAlignment="Left" Margin="330,-48,0,0" VerticalAlignment="Top" Width="49" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox Name="PlaySpeed" SelectedValuePath="Content" SelectedIndex="2" HorizontalAlignment="Left" Margin="331,-37,0,0" VerticalAlignment="Top" Width="49" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBoxItem FontSize="10" AllowDrop="True">0.5</ComboBoxItem>
                 <ComboBoxItem FontSize="10" AllowDrop="True">0.75</ComboBoxItem>
                 <ComboBoxItem FontSize="10" AllowDrop="True">1.0</ComboBoxItem>

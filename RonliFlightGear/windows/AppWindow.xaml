@@ -23,6 +23,11 @@
 
             <Grid Grid.Column="0">
                 <local:GraphController x:Name ="GraphController"></local:GraphController>
+                <Canvas HorizontalAlignment="Left" Height="71" Margin="309,10,0,0" VerticalAlignment="Top" Width="118">
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="WhatsApp Image 2021-04-08 at 19.33.48.jpeg"/>
+                    </Canvas.Background>
+                </Canvas>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>

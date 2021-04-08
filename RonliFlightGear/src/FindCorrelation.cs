@@ -100,29 +100,7 @@ namespace FlightGearApp
 
         public string findCrr(Dictionary<string, List<float>> data, List<string> strings)
         {
-            /*string returnValue = "";
-            foreach(string key in data.Keys)
-            {
-                float max = 0;
-                int size = this.values.Count;
-                returnValue = "";
-                for (int i = 0; i < strings.Count; i++)
-                {
-                    
-                    if (key == strings[i])
-                    {
-                        continue;
-                    }
-                    if (Math.Abs(pearson(data[key], data[strings[i]], size)) >= max)
-                    {
-                        max = Math.Abs(pearson(data[key], data[strings[i]], size));
-                        returnValue = strings[i];
-                    }
-
-                }
-                Console.WriteLine(key + "---------" + returnValue);
-                //Console.WriteLine(max);
-            }*/
+           
             float max = 0;
             int size = this.values.Count;
             string returnValue = "";

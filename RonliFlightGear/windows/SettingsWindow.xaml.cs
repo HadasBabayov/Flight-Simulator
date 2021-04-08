@@ -32,7 +32,9 @@ namespace FlightGearApp.windows
         private void loadCSV_button(object sender, RoutedEventArgs e)
         {
 
-            flViewModel.initializeParser(xmlBox.Text, csvBox.Text);
+            flViewModel.initializeParserForLearnCsv(xmlBox.Text, csvBox.Text);
+            flViewModel.initializeParserForAnomalyCsv(xmlBox.Text, csvBox2.Text);
+
 
             string s1 = flViewModel.parseXML();
             string s2 = flViewModel.MatchXMLToCSV();
@@ -40,7 +42,7 @@ namespace FlightGearApp.windows
             if (s1 == "" && s2 == "")
             {
                 flViewModel.createNewCsv();
-                windows.AppWindow appWindow = new AppWindow(flViewModel.getFilesParser());
+                windows.AppWindow appWindow = new AppWindow(flViewModel.getFilesParser(),flViewModel.getFilesParserForAnomalyCsv());
                 this.Close();
                 appWindow.Show();
             }
