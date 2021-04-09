@@ -176,8 +176,11 @@ namespace FlightGearApp
             return "";
 
         }
+
         public string createNewCsv()
         {
+            CSVLearn_exception = "";
+            CSVAnomaly_exception = "";
             try
             {
                 fp.CreateCsvForTimeSeries();
@@ -186,14 +189,63 @@ namespace FlightGearApp
             {
                 if (e.Message == "csvPath is not valid!")
                 {
-                    CSVLearn_exception = "csvPath is not valid!";
+                    CSVLearn_exception = "csvLearnPath is not valid!";
                     return "csvPath is not valid!";
+
                 }
                 CSVLearn_exception = "";
             }
             CSVLearn_exception = "";
             return "";
         }
+
+        /*public string createNewCsv()
+        {
+            CSVLearn_exception = "";
+            CSVAnomaly_exception = "";
+            try
+            {
+                fp.CreateCsvForTimeSeries();
+            }
+            catch (Exception e)
+            {
+                if (e.Message == "csvPath is not valid!")
+                {
+                    CSVLearn_exception = "csvLearnPath is not valid!";
+                    try
+                    {
+                        fpForAnomalyCsv.CreateCsvForTimeSeries();
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex.Message == "csvPath is not valid!")
+                        {
+                            CSVAnomaly_exception = "csvAnomalyPath is not valid!";
+                            return "csvPath is not valid!";
+                        }
+                        CSVLearn_exception = "";
+                    }
+                    return "csvPath is not valid!";
+                }
+                CSVLearn_exception = "";
+            }
+            try
+            {
+                fpForAnomalyCsv.CreateCsvForTimeSeries();
+            }
+            catch(Exception ex)
+            {
+                if (ex.Message == "csvPath is not valid!")
+                {
+                    CSVAnomaly_exception = "csvAnomalyPath is not valid!";
+                    return "csvPath is not valid!";
+                }
+                CSVLearn_exception = "";
+            }
+            CSVLearn_exception = "";
+            CSVAnomaly_exception = "";
+            return "";
+        }*/
 
         public FilesParser getFilesParser()
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using FlightGearApp;
@@ -39,6 +40,40 @@ namespace FlightGearApp
         public void run()
         {
             fm.run();
+        }
+
+        public float VM_AngleSpeed
+        {
+            get
+            {
+                return fm.AngleSpeed;
+            }
+            set
+            {
+                fm.AngleSpeed = value;
+            }
+        }
+        public float VM_AngleAltitude
+        {
+            get
+            {
+                return fm.AngleAltitude;
+            }
+            set
+            {
+                fm.AngleAltitude = value;
+            }
+        }
+        public float VM_AngleDirection
+        {
+            get
+            {
+                return fm.AngleDirection;
+            }
+            set
+            {
+                fm.AngleDirection = value;
+            }
         }
 
         public int VM_Time

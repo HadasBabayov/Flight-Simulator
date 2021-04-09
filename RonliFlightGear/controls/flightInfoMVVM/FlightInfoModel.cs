@@ -27,6 +27,10 @@ namespace FlightGearApp
         private volatile Dictionary<string, List<float>> map;
         private int flightLength;
         private int numOfLines;
+        private float angleSpeed;
+        private float angleAltitude;
+        private float angleDirection;
+
         public FlightInfoModel()
         {
             time = 0;
@@ -38,6 +42,10 @@ namespace FlightGearApp
             yaw = 0;
             roll = 0;
             pitch = 0;
+            angleSpeed = 0;
+            angleAltitude = 0;
+            angleDirection = 0;
+
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propName)
@@ -74,6 +82,42 @@ namespace FlightGearApp
             }
         }
 
+        public float AngleSpeed
+        {
+            get
+            {
+                return angleSpeed;
+            }
+            set
+            {
+                angleSpeed = value;
+                NotifyPropertyChanged("AngleSpeed");
+            }
+        }
+        public float AngleAltitude
+        {
+            get
+            {
+                return angleAltitude;
+            }
+            set
+            {
+                angleAltitude = value;
+                NotifyPropertyChanged("AngleAltitude");
+            }
+        }
+        public float AngleDirection
+        {
+            get
+            {
+                return angleDirection;
+            }
+            set
+            {
+                angleDirection = value;
+                NotifyPropertyChanged("AngleDirection");
+            }
+        }
         public bool ShouldStop
         {
             get
@@ -203,9 +247,14 @@ namespace FlightGearApp
 
         public void showLine(int time)
         {
+           
             Altitude = map["altimeter_indicated-altitude-ft1"][time];
+            AngleAltitude = -130 + 256 * (Altitude / map["altimeter_indicated-altitude-ft1"].Max());
             Speed = map["airspeed-kt1"][time];
+            float maxSpeed =map["airspeed-kt1"].Max();
+            AngleSpeed = -129 + 256 * (Speed / maxSpeed);
             Direction = map["indicated-heading-deg1"][time];
+            AngleDirection = -130 + 256 * (Direction / map["indicated-heading-deg1"].Max());
             Yaw = map["side-slip-deg1"][time];
             Roll = map["roll-deg1"][time];
             Pitch = map["pitch-deg1"][time];

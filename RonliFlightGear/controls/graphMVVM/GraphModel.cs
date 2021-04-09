@@ -169,9 +169,28 @@ namespace FlightGearApp
             var mostCorrelationGraphLinearSeries = new LineSeries { MarkerType = MarkerType.None };
 
             var regLineLinearSeries = new LineSeries { MarkerType = MarkerType.None };
+            var pointsOnRegLine = new LineSeries { MarkerType = MarkerType.Circle, LineStyle = LineStyle.None, MarkerSize = 2 };
             Line line = findMostCorr.linear_reg(selectedDatavalues, corrValues, selectedDatavalues.Count);
             regLineLinearSeries.Points.Add(new DataPoint(selectedDatavalues.Min(), line.f(selectedDatavalues.Min())));
             regLineLinearSeries.Points.Add(new DataPoint(selectedDatavalues.Max(), line.f(selectedDatavalues.Max())));
+
+            List<float> sortValuesSelectedData = Xml_Csv_AnomalyMap[SelectedDataName];
+            sortValuesSelectedData.Sort();
+
+            if (time < 30)
+            {
+                for (int i = 0; i <= time; i++)
+                {
+                    pointsOnRegLine.Points.Add(new DataPoint(sortValuesSelectedData[i], line.f(sortValuesSelectedData[i])));
+                }
+            }
+            else
+            {
+                for (int i = time - 30; i <= time; i++)
+                {
+                    pointsOnRegLine.Points.Add(new DataPoint(sortValuesSelectedData[i], line.f(sortValuesSelectedData[i])));
+                }
+            }
 
 
             for (int i = 0; i <= time; i++)
@@ -182,6 +201,7 @@ namespace FlightGearApp
             selectedGraphHelper.Series.Add(selectedGraphLinearSeries);
             mostCorGgraphHelper.Series.Add(mostCorrelationGraphLinearSeries);
             regLineGraphHelper.Series.Add(regLineLinearSeries);
+            regLineGraphHelper.Series.Add(pointsOnRegLine);
             this.ModelGraph = selectedGraphHelper;
             this.ModelCorrelationGraph = mostCorGgraphHelper;
             this.RegLine = regLineGraphHelper;

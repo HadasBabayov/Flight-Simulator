@@ -19,7 +19,7 @@ namespace FlightGearApp
         private Dictionary<int, string> CSVMap;
         int numOfColumns;
 
-      
+
         public FilesParser(string CSVpath, string XMLpath)
         {
             this.CSVPath = CSVpath;
@@ -66,7 +66,7 @@ namespace FlightGearApp
 
         public List<float> getCsvColumn(string name)
         {
-           
+
             return XML_CSVmap[name];
         }
 
@@ -80,11 +80,11 @@ namespace FlightGearApp
 
                 foreach (string key in list)
                 {
-                   
+
                     XML_CSVMap.Add(key, new List<float>());
                 }
 
-               
+
                 foreach (string line in lines)
                 {
                     string[] columns = line.Split(',');
@@ -183,25 +183,31 @@ namespace FlightGearApp
 
         public void CreateCsvForTimeSeries()
         {
-
-            //var filepath = "C:/Users/Ronli/source/repos/WpfApp1/WpfApp1/reg_flight_for_timeseries.csv";
-            var filepath = "reg_flight_for_timeseries.csv";
-            using (StreamWriter writer = new StreamWriter(new FileStream(filepath,
-            FileMode.Create, FileAccess.Write)))
+            try
             {
-                int i = 0;
-                for (; i < numOfColumns - 1; i++)
+                //var filepath = "C:/Users/Ronli/source/repos/WpfApp1/WpfApp1/reg_flight_for_timeseries.csv";
+                var filepath = "reg_flight_for_timeseries.csv";
+                using (StreamWriter writer = new StreamWriter(new FileStream(filepath,
+                FileMode.Create, FileAccess.Write)))
                 {
-                    writer.Write(list[i]);
-                    writer.Write(",");
-                }
-                writer.WriteLine(list[i]);
+                    int i = 0;
+                    for (; i < numOfColumns - 1; i++)
+                    {
+                        writer.Write(list[i]);
+                        writer.Write(",");
+                    }
+                    writer.WriteLine(list[i]);
 
-                string[] lines = System.IO.File.ReadAllLines(CSVPath);
-                foreach (string line in lines)
-                {
-                    writer.WriteLine(line);
+                    string[] lines = System.IO.File.ReadAllLines(CSVPath);
+                    foreach (string line in lines)
+                    {
+                        writer.WriteLine(line);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                throw new InputException("csvPath is not valid!");
             }
         }
     }

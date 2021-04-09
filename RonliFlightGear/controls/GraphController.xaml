@@ -32,7 +32,7 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <oxy:PlotView Model="{Binding VM_RegLine}" Margin="35,138,37.6,-373" />
+                <oxy:PlotView Model="{Binding VM_RegLine}" Margin="35,138,37.6,-345" />
             </Grid>
 
         </Grid>
