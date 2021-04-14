@@ -94,6 +94,9 @@ IFgClient.cs, IFilesParser.cs, IFindCorrelation.cs
 - By pressing the button a new window will pop up and you have to write the xml and csv paths. If you write wrong paths you will get an error, and will have to fill again those boxes with the correct ones.
 - Now, you can see the application window. In order to see the flight in the simulator in the FlightGear you download, press the play button. if you want to pause it, press pause button and for stoppng the app and start from the beginning, press stop button.
 
+**FlightGear App - Explenation Video**
+[Watch here](https://www.youtube.com/watch?v=NEGrobgzevc)
+
 #### Authors:
 * Hadas Babayov
 * Liav Trabelsy
