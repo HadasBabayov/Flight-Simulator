@@ -49,6 +49,10 @@ namespace FlightGearApp
 
         public void send(string data)
         {
+            if(networkStream == null)
+            {
+                return;
+            }
             try{
                 byte[] msgToSend = Encoding.ASCII.GetBytes(data);
                 networkStream.Write(msgToSend, 0, msgToSend.Length);
