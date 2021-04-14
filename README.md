@@ -83,6 +83,7 @@ IFgClient.cs, IFilesParser.cs, IFindCorrelation.cs
 **Instructions for using the application:**
 - Prepare two CSV files : first of them is the flight data, and the second one learning about correlative data.
 - Download IDE visual studio 2019 in order to run the application in a comfortable place (.Net Framework version 4.7.2 and above).
+- Clone the project.
 - For writing your own dll anomaly algorithm, write a class library with a .Net 4.8 version (more details at the app).
 - Install OxyPlot.dll, OxyPlot.Wpf.dll, OxyPlot.Wpf.xml, OxyPlot.xml. 
 - Download 'FlightGear' 2020.3.6 application. You can use it: https://www.flightgear.org/
